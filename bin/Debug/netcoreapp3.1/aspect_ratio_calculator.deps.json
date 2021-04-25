@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "aspect_ratio_calculator/1.0.0": {
+        "runtime": {
+          "aspect_ratio_calculator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "aspect_ratio_calculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

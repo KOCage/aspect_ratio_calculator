@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\pelop\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\pelop\\.nuget\\packages"
+    ]
+  }
+}
