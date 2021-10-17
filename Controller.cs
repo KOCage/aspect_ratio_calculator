@@ -46,14 +46,15 @@ namespace aspect_ratio_calculator
 
             string WDUnit = v.getUnit2();
 
-            decimal WD = getWDInches(WDText, WDUnit);
+            decimal WD_mm = getWDmm(WDText, WDUnit);
             decimal AR = Decimal.Parse(v.getInput1());
 
-            decimal ID = Math.Round(AR * WD, 4);
-            decimal nearestStandardID = m.getNearestID(ID);
+            decimal ID_mm = Math.Round(AR * WD_mm, 4);
+            decimal ID_inches = Math.Round(ID_mm / 25.4m, 4);
+            decimal nearestStandardID = m.getNearestID(ID_inches);
             string nearestStandardFraction = m.ConvertIDDecimalToFraction(nearestStandardID);
 
-            v.updateResult("Actual Inner Diameter: " + ID + "\n" +
+            v.updateResult("Actual Inner Diameter: " + ID_mm + "mm - " + ID_inches + "\"\n" +
                            "Nearest Standard: " + nearestStandardFraction + "\" - " + nearestStandardID + "\"");
         }
 
@@ -74,14 +75,19 @@ namespace aspect_ratio_calculator
             int SWG_Guage = m.ConvertWDSWGInchesToGuage(nearestStandardWD_SWG);
 
             v.updateResult("Actual Wire Diameter: " + WD + "\n" +
-                           "Nearest Standard AWG: " + AWG_Guage + "G - " + nearestStandardWD_AWG + "\"\n" +
-                           "Nearest Standard SWG: " + SWG_Guage + "G - " + nearestStandardWD_SWG + "\"");
+                           "Nearest common AWG: " + AWG_Guage + "G - " + nearestStandardWD_AWG + "\"\n" +
+                           "Nearest common SWG: " + SWG_Guage + "G - " + nearestStandardWD_SWG + "\"");
         }
 
         public void switchMode(Mode newMode)
         {
             currentMode = newMode;
             updateLayout();
+        }
+
+        public Mode getCurrentMode()
+        {
+            return currentMode;
         }
         
         public void updateLayout()
@@ -159,18 +165,30 @@ namespace aspect_ratio_calculator
         {
             switch (inUnit)
             {
-                case "AWG-Gauge":
-                    return m.ConvertWDAWGGaugeToInches(int.Parse(inValue));
-                case "AWG-Inches":
-                    return Decimal.Parse(inValue);
-                case "AWG-MM":
-                    return m.ConvertWDAWGMMToInches(Decimal.Parse(inValue));
-                case "SWG-Gauge":
+                case "SWG":
                     return m.ConvertWDSWGGaugeToInches(int.Parse(inValue));
-                case "SWG-Inches":
+                case "AWG":
+                    return m.ConvertWDAWGGaugeToInches(int.Parse(inValue));
+                case "Inches":
                     return Decimal.Parse(inValue);
-                case "SWG-MM":
+                case "MM":
                     return m.ConvertWDSWGMMToInches(Decimal.Parse(inValue));
+            }
+
+            return 0.0M;
+        }
+        public decimal getWDmm(string inValue, string inUnit)
+        {
+            switch (inUnit)
+            {
+                case "SWG":
+                    return m.ConvertWDSWGGaugeToMM(int.Parse(inValue));
+                case "AWG":
+                    return m.ConvertWDAWGGaugeToMM(int.Parse(inValue));
+                case "Inches":
+                    return Decimal.Parse(inValue) / 25.4m;
+                case "MM":
+                    return Decimal.Parse(inValue);
             }
 
             return 0.0M;

@@ -1,0 +1,5 @@
+C:\Users\pelop\Desktop\aspect_ratio_calculator.exe
+C:\Users\pelop\Desktop\aspect_ratio_calculator.dll
+C:\Users\pelop\Desktop\aspect_ratio_calculator.deps.json
+C:\Users\pelop\Desktop\aspect_ratio_calculator.runtimeconfig.json
+C:\Users\pelop\Desktop\aspect_ratio_calculator.pdb

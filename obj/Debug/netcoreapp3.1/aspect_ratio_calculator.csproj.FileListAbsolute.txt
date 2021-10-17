@@ -4,7 +4,6 @@ E:\Code Ground\aspect_ratio_calculator\bin\Debug\netcoreapp3.1\aspect_ratio_calc
 E:\Code Ground\aspect_ratio_calculator\bin\Debug\netcoreapp3.1\aspect_ratio_calculator.runtimeconfig.dev.json
 E:\Code Ground\aspect_ratio_calculator\bin\Debug\netcoreapp3.1\aspect_ratio_calculator.dll
 E:\Code Ground\aspect_ratio_calculator\bin\Debug\netcoreapp3.1\aspect_ratio_calculator.pdb
-E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.csprojAssemblyReference.cache
 E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.csproj.GenerateResource.cache
 E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.AssemblyInfoInputs.cache
 E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.AssemblyInfo.cs
@@ -14,3 +13,4 @@ E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calc
 E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.genruntimeconfig.cache
 E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.View.resources
 E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.Properties.Resources.resources
+E:\Code Ground\aspect_ratio_calculator\obj\Debug\netcoreapp3.1\aspect_ratio_calculator.csproj.AssemblyReference.cache

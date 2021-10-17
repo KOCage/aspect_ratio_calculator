@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace aspect_ratio_calculator
 {
     public class Model
     {
+        private string localDirectory;
+        private string configFilePath;
         struct WD_AWG
         {
             public int g;
@@ -58,6 +61,8 @@ namespace aspect_ratio_calculator
         {
             initializeWD_AWG();
             initializeID();
+            localDirectory = Directory.GetCurrentDirectory();
+            configFilePath = localDirectory + "\\config.txt";
         }
 
         private void initializeWD_AWG()
@@ -66,11 +71,16 @@ namespace aspect_ratio_calculator
             {
                 new WD_AWG(24, .02M, .5M),
                 new WD_AWG(22, .025M, .6M),
+                new WD_AWG(21, .029M, .737M),
                 new WD_AWG(20, .032M, .812M),
+                new WD_AWG(19, .036M, 0.914M),
                 new WD_AWG(18, .04M, 1.0M),
+                new WD_AWG(17, .045M, 1.15M),
                 new WD_AWG(16, .048M, 1.2M),
+                new WD_AWG(15, .057M, 1.45M),
                 new WD_AWG(14, .062M, 1.6M),
                 new WD_AWG(12, .08M, 2.0M),
+                new WD_AWG(10, .102M, 2.59M),
             };
         }
 
@@ -79,8 +89,11 @@ namespace aspect_ratio_calculator
             WD_SWGConversions = new WD_SWG[]
             {
                 new WD_SWG(24, .022M, .559M),
+                new WD_SWG(23, .024M, .61M),
                 new WD_SWG(22, .028M, .711M),
-                new WD_SWG(20, .032M, .812M),
+                new WD_SWG(21, .032M, .813M),
+                new WD_SWG(20, .036M, .914M),
+                new WD_SWG(19, .04M, 1.0M),
                 new WD_SWG(18, .048M, 1.2M),
                 new WD_SWG(16, .062M, 1.6M),
                 new WD_SWG(14, .08M, 2.0M),
@@ -298,12 +311,10 @@ namespace aspect_ratio_calculator
         {
             string[] WDUnits = new string[]
             {
-                "AWG-Gauge",
-                "AWG-Inches",
-                "AWG-MM",
-                "SWG-Gauge",
-                "SWG-Inches",
-                "SWG-MM"
+                "SWG",
+                "AWG",
+                "Inches",
+                "MM"
             };
             return WDUnits;
         }
@@ -403,5 +414,80 @@ namespace aspect_ratio_calculator
                 return maxValue;
         }
 
+        public char loadLayout()
+        {
+            if (!File.Exists(configFilePath))
+                createConfigFile();
+
+            char layout = getConfigValue("layout")[0];
+
+            return layout;
+        }
+
+        public void saveLayout(char layoutChar)
+        {
+            Dictionary<string, string> config = createConfig("layout", layoutChar.ToString());
+            updateConfigFile(config);
+        }
+
+        private void createConfigFile()
+        {
+            
+            string configFileText = defaultConfigFile();
+            File.WriteAllText(configFilePath, configFileText);
+        }
+
+        private void updateConfigFile(Dictionary<string, string> config)
+        {
+            string[] fileText = File.ReadAllLines(configFilePath);
+
+            fileText = updateConfigFileText(fileText, config);
+
+            File.WriteAllLines(configFilePath, fileText);
+        }
+
+        private string getConfigValue(string key)
+        {
+            string[] fileText = File.ReadAllLines(configFilePath);
+            foreach(string line in fileText)
+            {
+                if (line.Split('|')[0].Equals(key))
+                {
+                    return line.Split('|')[1];
+                }
+            }
+
+            throw new Exception("configuration for key " + key + " was not found!");
+        }
+
+        private Dictionary<string, string> createConfig(string key, string value)
+        {
+            Dictionary<string, string> config = new Dictionary<string, string>();
+            config.Add(key, value);
+
+            return config;
+        }
+
+        private string defaultConfigFile()
+        {
+            string config = "layout|L";
+
+            return config;
+        }
+
+        private string[] updateConfigFileText(string[] fileText, Dictionary<string, string> config)
+        {
+            for(int i = 0; i < fileText.Length; i++)
+            {
+                string[] pair = fileText[i].Split('|');
+                if (config.TryGetValue(pair[0], out string value))
+                { 
+                    fileText[i] = pair[0] + "|" + value;
+                    break;
+                }
+            }
+
+            return fileText;
+        }
     }
 }

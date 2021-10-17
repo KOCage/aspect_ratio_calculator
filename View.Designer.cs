@@ -29,7 +29,6 @@ namespace aspect_ratio_calculator
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View));
             this.ARButton = new System.Windows.Forms.Button();
             this.WDButton = new System.Windows.Forms.Button();
             this.IDButton = new System.Windows.Forms.Button();
@@ -41,54 +40,67 @@ namespace aspect_ratio_calculator
             this.comboBoxUnit1 = new System.Windows.Forms.ComboBox();
             this.comboBoxUnit2 = new System.Windows.Forms.ComboBox();
             this.labelResult = new System.Windows.Forms.Label();
+            this.layoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ARButton
             // 
             this.ARButton.AccessibleDescription = "Button to switch to AR Calculation";
             this.ARButton.AccessibleName = "AR-button";
-            this.ARButton.Image = ((System.Drawing.Image)(resources.GetObject("ARButton.Image")));
-            this.ARButton.Location = new System.Drawing.Point(39, 12);
+            this.ARButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ARButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ARButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ARButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(249)))), ((int)(((byte)(204)))));
+            this.ARButton.Location = new System.Drawing.Point(28, 12);
             this.ARButton.Name = "ARButton";
             this.ARButton.Size = new System.Drawing.Size(150, 50);
             this.ARButton.TabIndex = 0;
-            this.ARButton.UseVisualStyleBackColor = true;
+            this.ARButton.Text = "Aspect Ratio";
+            this.ARButton.UseVisualStyleBackColor = false;
             this.ARButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clickAspectRatioButton);
             // 
             // WDButton
             // 
             this.WDButton.AccessibleDescription = "Button to switch to WD Calculation";
             this.WDButton.AccessibleName = "WD-button";
-            this.WDButton.Image = ((System.Drawing.Image)(resources.GetObject("WDButton.Image")));
+            this.WDButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(249)))), ((int)(((byte)(204)))));
+            this.WDButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.WDButton.Font = new System.Drawing.Font("Comic Sans MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.WDButton.ForeColor = System.Drawing.Color.Black;
             this.WDButton.Location = new System.Drawing.Point(184, 12);
             this.WDButton.Name = "WDButton";
             this.WDButton.Size = new System.Drawing.Size(150, 50);
             this.WDButton.TabIndex = 1;
-            this.WDButton.UseVisualStyleBackColor = true;
+            this.WDButton.Text = "Wire Diameter";
+            this.WDButton.UseVisualStyleBackColor = false;
             this.WDButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clickWireDiameterButton);
             // 
             // IDButton
             // 
             this.IDButton.AccessibleDescription = "Button to switch to ID Calculation";
             this.IDButton.AccessibleName = "ID-button";
-            this.IDButton.Image = ((System.Drawing.Image)(resources.GetObject("IDButton.Image")));
-            this.IDButton.Location = new System.Drawing.Point(330, 12);
+            this.IDButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(249)))), ((int)(((byte)(204)))));
+            this.IDButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IDButton.Font = new System.Drawing.Font("Comic Sans MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.IDButton.ForeColor = System.Drawing.Color.Black;
+            this.IDButton.Location = new System.Drawing.Point(340, 12);
             this.IDButton.Name = "IDButton";
             this.IDButton.Size = new System.Drawing.Size(150, 50);
             this.IDButton.TabIndex = 2;
-            this.IDButton.UseVisualStyleBackColor = true;
+            this.IDButton.Text = "Inner Diameter";
+            this.IDButton.UseVisualStyleBackColor = false;
             this.IDButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clickInnerDiameterButton);
             // 
             // textBoxInput1
             // 
-            this.textBoxInput1.Location = new System.Drawing.Point(137, 94);
+            this.textBoxInput1.Location = new System.Drawing.Point(160, 94);
             this.textBoxInput1.Name = "textBoxInput1";
             this.textBoxInput1.Size = new System.Drawing.Size(125, 27);
             this.textBoxInput1.TabIndex = 3;
             // 
             // textBoxInput2
             // 
-            this.textBoxInput2.Location = new System.Drawing.Point(137, 139);
+            this.textBoxInput2.Location = new System.Drawing.Point(160, 139);
             this.textBoxInput2.Name = "textBoxInput2";
             this.textBoxInput2.Size = new System.Drawing.Size(125, 27);
             this.textBoxInput2.TabIndex = 4;
@@ -96,24 +108,24 @@ namespace aspect_ratio_calculator
             // labelInput1
             // 
             this.labelInput1.AutoSize = true;
-            this.labelInput1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelInput1.Font = new System.Drawing.Font("Trebuchet MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelInput1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelInput1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.labelInput1.Font = new System.Drawing.Font("Comic Sans MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelInput1.ForeColor = System.Drawing.Color.Black;
             this.labelInput1.Location = new System.Drawing.Point(12, 97);
             this.labelInput1.Name = "labelInput1";
-            this.labelInput1.Size = new System.Drawing.Size(121, 23);
+            this.labelInput1.Size = new System.Drawing.Size(133, 24);
             this.labelInput1.TabIndex = 6;
             this.labelInput1.Text = "Wire Diameter";
             // 
             // labelInput2
             // 
             this.labelInput2.AutoSize = true;
-            this.labelInput2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelInput2.Font = new System.Drawing.Font("Trebuchet MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelInput2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelInput2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.labelInput2.Font = new System.Drawing.Font("Comic Sans MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelInput2.ForeColor = System.Drawing.Color.Black;
             this.labelInput2.Location = new System.Drawing.Point(12, 142);
             this.labelInput2.Name = "labelInput2";
-            this.labelInput2.Size = new System.Drawing.Size(124, 23);
+            this.labelInput2.Size = new System.Drawing.Size(139, 24);
             this.labelInput2.TabIndex = 7;
             this.labelInput2.Text = "Inner Diameter";
             // 
@@ -121,25 +133,26 @@ namespace aspect_ratio_calculator
             // 
             this.CalculateButton.AccessibleDescription = "Button to perform calculation";
             this.CalculateButton.AccessibleName = "Calculate-button";
-            this.CalculateButton.Image = ((System.Drawing.Image)(resources.GetObject("CalculateButton.Image")));
+            this.CalculateButton.BackColor = System.Drawing.Color.Black;
+            this.CalculateButton.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CalculateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(249)))), ((int)(((byte)(204)))));
             this.CalculateButton.Location = new System.Drawing.Point(12, 189);
             this.CalculateButton.Name = "CalculateButton";
             this.CalculateButton.Size = new System.Drawing.Size(150, 50);
             this.CalculateButton.TabIndex = 9;
-            this.CalculateButton.UseVisualStyleBackColor = true;
+            this.CalculateButton.Text = "Calculate";
+            this.CalculateButton.UseVisualStyleBackColor = false;
             this.CalculateButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clickCalculateButton);
             // 
             // comboBoxUnit1
             // 
             this.comboBoxUnit1.FormattingEnabled = true;
             this.comboBoxUnit1.Items.AddRange(new object[] {
-            "AWG-Gauge",
-            "AWG-Inches",
-            "AWG-MM",
-            "SWG-Gauge",
-            "SWG-Inches",
-            "SWG-MM"});
-            this.comboBoxUnit1.Location = new System.Drawing.Point(278, 93);
+            "SWG",
+            "AWG",
+            "Inches",
+            "MM"});
+            this.comboBoxUnit1.Location = new System.Drawing.Point(301, 93);
             this.comboBoxUnit1.Name = "comboBoxUnit1";
             this.comboBoxUnit1.Size = new System.Drawing.Size(136, 28);
             this.comboBoxUnit1.TabIndex = 10;
@@ -151,7 +164,7 @@ namespace aspect_ratio_calculator
             "Fraction Inches",
             "Decimal Inches",
             "MM"});
-            this.comboBoxUnit2.Location = new System.Drawing.Point(278, 138);
+            this.comboBoxUnit2.Location = new System.Drawing.Point(301, 138);
             this.comboBoxUnit2.Name = "comboBoxUnit2";
             this.comboBoxUnit2.Size = new System.Drawing.Size(136, 28);
             this.comboBoxUnit2.TabIndex = 11;
@@ -160,19 +173,35 @@ namespace aspect_ratio_calculator
             // 
             this.labelResult.AutoSize = true;
             this.labelResult.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelResult.Font = new System.Drawing.Font("Trebuchet MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelResult.Font = new System.Drawing.Font("Comic Sans MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelResult.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelResult.Location = new System.Drawing.Point(189, 203);
             this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(0, 23);
+            this.labelResult.Size = new System.Drawing.Size(0, 24);
             this.labelResult.TabIndex = 12;
+            // 
+            // layoutButton
+            // 
+            this.layoutButton.AccessibleDescription = "Button to swap between layouts";
+            this.layoutButton.AccessibleName = "Layout-Button";
+            this.layoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.layoutButton.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.layoutButton.ForeColor = System.Drawing.Color.Black;
+            this.layoutButton.Location = new System.Drawing.Point(514, 12);
+            this.layoutButton.Name = "layoutButton";
+            this.layoutButton.Size = new System.Drawing.Size(33, 50);
+            this.layoutButton.TabIndex = 13;
+            this.layoutButton.Text = "L";
+            this.layoutButton.UseVisualStyleBackColor = true;
+            this.layoutButton.Click += new System.EventHandler(this.clickSwitchLayout);
             // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(525, 313);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(236)))));
+            this.ClientSize = new System.Drawing.Size(571, 276);
+            this.Controls.Add(this.layoutButton);
             this.Controls.Add(this.labelResult);
             this.Controls.Add(this.comboBoxUnit2);
             this.Controls.Add(this.comboBoxUnit1);
@@ -185,7 +214,7 @@ namespace aspect_ratio_calculator
             this.Controls.Add(this.WDButton);
             this.Controls.Add(this.ARButton);
             this.Name = "View";
-            this.Text = "Inner Diameter";
+            this.Text = "Aspect Ratio";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +233,7 @@ namespace aspect_ratio_calculator
         private System.Windows.Forms.ComboBox comboBoxUnit1;
         private System.Windows.Forms.ComboBox comboBoxUnit2;
         private System.Windows.Forms.Label labelResult;
+        private System.Windows.Forms.Button layoutButton;
     }
 }
 

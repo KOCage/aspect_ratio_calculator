@@ -18,7 +18,7 @@ namespace aspect_ratio_calculator
 
             Model model = new Model();
             Controller controller = new Controller(model);
-            View view = new View(controller);
+            View view = new View(controller, model);
 
             Application.Run(view);
         }

@@ -13,11 +13,22 @@ namespace aspect_ratio_calculator
     public partial class View : Form
     {
         private Controller c;
-        public View(Controller inController)
+        private Model m;
+
+        private LayoutBase layout;
+
+        public View(Controller inController, Model inModel)
         {
             c = inController;
             c.setView(this);
+            m = inModel;
             InitializeComponent();
+            if (m.loadLayout().Equals('D'))
+                layout = new DarkLayout();
+            else
+                layout = new LightLayout();
+            c.changeToARMode();
+            updateLayout();
         }
 
         private void clickAspectRatioButton(object sender, MouseEventArgs e)
@@ -35,32 +46,32 @@ namespace aspect_ratio_calculator
 
         public void enableARButton()
         {
-            ARButton.Image = Properties.Resources.ARActive;
-
+            layout.setActive(ARButton);
+            Text = "Aspect Ratio";
         }
         public void disableARButton()
         {
-            ARButton.Image = Properties.Resources.ARInactive;
+            layout.setInactive(ARButton);
         }
 
         public void enableWDButton()
         {
-            WDButton.Image = Properties.Resources.WDActive;
-
+            layout.setActive(WDButton);
+            Text = "Wire Diameter";
         }
         public void disableWDButton()
         {
-            WDButton.Image = Properties.Resources.WDInactive;
+            layout.setInactive(WDButton);
         }
 
         public void enableIDButton()
         {
-            IDButton.Image = Properties.Resources.IDActive;
-
+            layout.setActive(IDButton);
+            Text = "Inner Diameter";
         }
         public void disableIDButton()
         {
-            IDButton.Image = Properties.Resources.IDInactive;
+            layout.setInactive(IDButton);
         }
 
         public void setLabelInput1(string newText)
@@ -138,8 +149,57 @@ namespace aspect_ratio_calculator
         }
 
         private void clickCalculateButton(object sender, MouseEventArgs e)
-        {
-            c.performCalculation();
+        {   
+            try
+            {
+                c.performCalculation();
+            } catch {
+
+            }
         }
+        private void clickSwitchLayout(object sender, EventArgs e)
+        {
+            char layoutChar = ' ';
+            if (layout is DarkLayout)
+            {
+                layout = new LightLayout();
+                layoutChar = 'L';
+            }
+            else
+            {
+                layout = new DarkLayout();
+                layoutChar = 'D';
+            }
+            updateLayout();
+            m.saveLayout(layoutChar);
+        }
+        public void updateLayout()
+        {
+            switch(c.getCurrentMode())
+            {
+                case Controller.Mode.AR:
+                    layout.setActive(ARButton);
+                    layout.setInactive(IDButton);
+                    layout.setInactive(WDButton);
+                    break;
+                case Controller.Mode.WD:
+                    layout.setInactive(ARButton);
+                    layout.setInactive(IDButton);
+                    layout.setActive(WDButton);
+                    break;
+                case Controller.Mode.ID:
+                    layout.setInactive(ARButton);
+                    layout.setActive(IDButton);
+                    layout.setInactive(WDButton);
+                    break;
+            }
+            layout.updateLabel(labelInput1);
+            layout.updateLabel(labelInput2);
+            layout.updateLabel(labelResult);
+            layout.updateCalculate(CalculateButton);
+            layout.updateLayout(layoutButton);
+            BackColor = layout.getBackgroundColor();
+        }
+
     }
 }
