@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace aspect_ratio_calculator
@@ -154,7 +147,7 @@ namespace aspect_ratio_calculator
             {
                 c.performCalculation();
             } catch {
-
+                MessageBox.Show("One more more values are missing.", "Error", MessageBoxButtons.OK);
             }
         }
         private void clickSwitchLayout(object sender, EventArgs e)
